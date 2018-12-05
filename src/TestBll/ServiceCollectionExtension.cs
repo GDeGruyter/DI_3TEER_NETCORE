@@ -1,15 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using TestDataAccessLayer;
+﻿using TestBusinessLogicLayer;
 
-namespace TestBusinessLogicLayer
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection 
 {
     public static class ServiceCollectionExtension
     {
-        public static void RegisterBusinessLogic(this IServiceCollection services)
+        public static IServiceCollection AddBusinessLogic(this IServiceCollection services)
         {
-            services.AddTransient<IBusinessLogic, BusinessLogic>();
+            services
+                .AddTransient<IBusinessLogic, BusinessLogic>()
+                .AddRepository();
 
-            services.RegisterRepository();
+            return services;
         }
     }
 }

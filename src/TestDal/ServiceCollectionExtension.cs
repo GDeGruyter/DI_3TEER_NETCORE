@@ -1,12 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using TestDataAccessLayer;
 
-namespace TestDataAccessLayer
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection 
 {
     public static class ServiceCollectionExtension
     {
-        public static void RegisterRepository(this IServiceCollection services)
+        public static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddTransient<IRepository, Repository>();
+
+            return services;
         }
     }
 }
