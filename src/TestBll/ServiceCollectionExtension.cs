@@ -8,8 +8,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddBusinessLogic(this IServiceCollection services)
         {
             services
-                .AddTransient<IBusinessLogic, BusinessLogic>()
-                .AddRepository();
+                .AddRepository()
+                .AddTransient<IBusinessLogic, BusinessLogic>();
 
             return services;
         }
